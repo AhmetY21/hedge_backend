@@ -51,7 +51,7 @@ async def process_match(
 ):
     try:
         # Validate file types
-        if not (credit_file.filename.endswith('.xlsx') and swap_file.filename.endswith('.xlsx'):
+        if not (credit_file.filename.endswith('.xlsx') and swap_file.filename.endswith('.xlsx')):
             raise HTTPException(400, "Only .xlsx files are supported")
 
         # Process credit file
@@ -73,7 +73,6 @@ async def process_match(
     except Exception as e:
         logger.error(f"Processing error: {str(e)}", exc_info=True)
         raise HTTPException(500, "Internal server error")
-
 @app.post("/api/preview")
 async def preview_file(file: UploadFile = File(...)):
     try:
